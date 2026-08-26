@@ -13,7 +13,7 @@ CREATE TABLE transactions (
     merchant     VARCHAR(200) NOT NULL,
     amount       NUMERIC(12, 2) NOT NULL,
     category_id  BIGINT NOT NULL,
-    occurred_at  TIMESTAMPTZ NOT NULL,
-    created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+    occurred_at  TIMESTAMP WITH TIME ZONE NOT NULL,
+    created_at   TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
     CONSTRAINT fk_transactions_category FOREIGN KEY (category_id) REFERENCES categories (id)
 );
