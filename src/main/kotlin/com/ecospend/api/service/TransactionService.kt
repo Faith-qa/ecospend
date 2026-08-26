@@ -5,7 +5,7 @@ import com.ecospend.api.dto.CreateTransactionRequest
 import com.ecospend.api.dto.TransactionResponse
 import com.ecospend.api.entity.Category
 import com.ecospend.api.entity.Transaction
-import com.ecospend.api.exception.CategoryNotFoundException
+import com.ecospend.api.exception.ResourceNotFoundException
 import com.ecospend.api.repository.CategoryRepository
 import com.ecospend.api.repository.TransactionRepository
 import org.springframework.data.repository.findByIdOrNull
@@ -19,7 +19,7 @@ class TransactionService(
 
     fun create(request: CreateTransactionRequest): TransactionResponse {
         val category = categoryRepository.findByIdOrNull(request.categoryId)
-            ?: throw CategoryNotFoundException(request.categoryId)
+            ?: throw ResourceNotFoundException("Category with id ${request.categoryId} not found")
 
         val transaction = Transaction(
             userId = request.userId,
