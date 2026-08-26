@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ecospend-api
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:ecospend}
+    username: ${DB_USERNAME:ecospend}
+    password: ${DB_PASSWORD:ecospend}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
